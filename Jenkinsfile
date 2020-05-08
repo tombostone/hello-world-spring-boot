@@ -13,7 +13,7 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
+                echo 'M2_HOME= ${M2_HOME}'
             }
         }
         stage('Deploy') {
