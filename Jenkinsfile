@@ -14,6 +14,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo "M2_HOME= ${M2_HOME}"
+                sh 'java -version'
             }
         }
         stage('Deploy') {
