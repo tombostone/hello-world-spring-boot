@@ -27,6 +27,15 @@ pipeline {
                 sh 'docker build -t tombostone/myproject .'
             }
         }
+        
+         stage('push image ') {
+            steps {
+                withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
+                    sh "docker login -u tombostone -p ${dockerHubPwd}"
+             }
+                sh 'docker push tombostone/myproject'
+            }
+        }
     }
 }
 
