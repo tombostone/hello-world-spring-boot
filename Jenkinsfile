@@ -22,9 +22,9 @@ pipeline {
             }
         }
 
-        stage('create image & publish to docker hub') {
+        stage('create image ') {
             steps {
-                sh 'mvn clean deploy'
+                sh 'docker build -t tombostone/myproject .'
             }
         }
     }
