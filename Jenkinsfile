@@ -1,6 +1,7 @@
 pipeline {
     agent any
 
+
     tools {
      maven 'MAVEN_HOME'
     }
@@ -20,10 +21,12 @@ pipeline {
                 sh 'java -version'
             }
         }
+
         stage('create image & publish to docker hub') {
             steps {
                 sh 'mvn clean deploy'
             }
         }
     }
-}
+
+
