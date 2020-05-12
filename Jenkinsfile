@@ -40,7 +40,7 @@ pipeline {
         
          stage('Run image ') {
             steps {
-                 def dockerRun = 'docker run -d -p 8080:8080 --name my-app tombostone/myproject:0.0.1'
+               //  def dockerRun = 'docker run -d -p 8080:8080 --name my-app tombostone/myproject:0.0.1'
                sshagent(['dev-server']) {
                    sh "ssh -o StrictHostKeyChecking=no ec2-user@35.180.211.247 ${dockerRun} "
                 }
