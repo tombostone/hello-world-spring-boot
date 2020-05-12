@@ -25,7 +25,7 @@ pipeline {
 
         stage('create image ') {
             steps {
-                sh 'docker build -t tombostone/myproject:0.0.1 .'
+                sh 'docker build -t tombostone/myproject:0.0.2 .'
             }
         }
         
@@ -34,7 +34,7 @@ pipeline {
                 withCredentials([string(credentialsId: 'docker-hub', variable: 'dockerHubPwd')]) {
                     sh "docker login -u tombostone -p ${dockerHubPwd}"
              }
-                sh 'docker push tombostone/myproject:0.0.1'
+                sh 'docker push tombostone/myproject:0.0.2'
             }
         }
         
@@ -44,7 +44,7 @@ pipeline {
                
                sshagent(['dev-server']) {
                      script {
-                       def dockerRun = 'docker run -d -p 8080:8080 --name my-app tombostone/myproject:0.0.1'
+                       def dockerRun = 'docker run -d -p 8080:8080 --name my-app tombostone/myproject:0.0.2'
                          sh "ssh -o StrictHostKeyChecking=no ec2-user@35.180.211.247 ${dockerRun}"
                  }
                    
