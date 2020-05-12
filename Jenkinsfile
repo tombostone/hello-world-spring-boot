@@ -45,8 +45,9 @@ pipeline {
                sshagent(['dev-server']) {
                      script {
                        def dockerRun = 'docker run -d -p 8080:8080 --name my-app tombostone/myproject:0.0.1'
+                         sh "ssh -o StrictHostKeyChecking=no ec2-user@35.180.211.247 ${dockerRun}"
                  }
-                   sh "ssh -o StrictHostKeyChecking=no ec2-user@35.180.211.247 ${dockerRun}"
+                   
                   
                 }
             }
